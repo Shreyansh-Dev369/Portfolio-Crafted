@@ -13,7 +13,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       {/* Background video (GLOBAL, BEHIND EVERYTHING) */}
-      <BackgroundVideo />
+      <BackgroundVideo videoSrc="background.mp4" />
 
       {/* UI Providers */}
       <Toaster />
