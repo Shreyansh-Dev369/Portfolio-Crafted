@@ -62,7 +62,7 @@ const Header = () => {
       {/* ================= LOGO ================= */}
       <motion.div
         className="flex items-center justify-center"
-        style={{ perspective: 1000 }}
+        style={{ perspective: 1200 }}
         onMouseMove={handleMove}
         onMouseLeave={() => {
           x.set(0);
@@ -71,34 +71,49 @@ const Header = () => {
         animate={{ scale: isScrolled ? 0.9 : 1 }}
         transition={{ duration: 0.3 }}
       >
-        <motion.img
-          src="shreyansh.png"
-          alt="Logo"
-          draggable={false}
-          style={{ rotateX, rotateY }}
+        {/* GLOWING CIRCLE */}
+        <motion.div
           animate={{
-            y: [0, -6, 0],
-            filter: [
-              "drop-shadow(0 0 20px rgba(255,0,0,0.4))",
-              "drop-shadow(0 0 40px rgba(255,0,0,0.8))",
-              "drop-shadow(0 0 20px rgba(255,0,0,0.4))",
+            boxShadow: [
+              "0 0 20px rgba(255,46,46,0.4)",
+              "0 0 45px rgba(255,46,46,0.9)",
+              "0 0 20px rgba(255,46,46,0.4)",
             ],
           }}
           transition={{
-            y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-            filter: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
           className="
-            w-16 h-16 md:w-20 md:h-20
-            object-contain
-            select-none
-            pointer-events-none
-            bg-transparent
+            flex items-center justify-center
+            rounded-full
+            border border-red-500/60
+            w-20 h-20 md:w-24 md:h-24
           "
-        />
+        >
+          {/* LOGO IMAGE */}
+          <motion.img
+            src="shreyansh.png"
+            alt="Logo"
+            draggable={false}
+            style={{ rotateX, rotateY }}
+            animate={{ y: [0, -8, 0] }}
+            transition={{
+              y: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+            }}
+            className="
+              w-14 h-14 md:w-16 md:h-16
+              object-contain
+              select-none
+              pointer-events-none
+              bg-transparent
+            "
+          />
+        </motion.div>
       </motion.div>
 
-      {/* ================= NAV (RIGHT ALIGNED) ================= */}
+      {/* ================= NAV ================= */}
       <nav className="ml-auto flex items-center">
         <ul className="flex gap-10">
           {navLinks.map((link, i) => (
